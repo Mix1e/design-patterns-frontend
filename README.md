@@ -66,3 +66,57 @@ const door2 = DoorFactory.makeDoor(50, 100);
 ## 🏭 Factory Method
 ---
 Делегирование логики создания дочерним классам
+
+```typescript
+interface Interviewer {
+    askQuestions(): void;
+}
+
+class Developer implements Interviewer {
+    askQuestions(): void {
+        console.log('Asking about design patterns!');
+    }
+}
+
+class CommunityExecutive implements Interviewer {
+    askQuestions(): void {
+        console.log('Asking about community building');
+    }
+}
+```
+
+Логика взятия интервью едина - поэтому реализуется сразу в абстрактном классе HiringManager.
+```typescript
+abstract class HiringManager {
+    abstract protected makeInterviewer(): Interviewer;
+
+    public takeInterview() {
+        const interviewer = this.makeInterviewer();
+        interviewer.askQuestions();
+    }
+}
+```
+
+В итоге получаем класс прослойку.
+```typescript
+class DevelopmentManager extends HiringManager {
+    protected makeInterviewer(): Interviewer {
+        return new Developer();
+    }
+}
+
+class MarketingManager extends HiringManager {
+    protected makeInterviewer(): Interviewer {
+        return new CommunityExecutive();
+    }
+}
+```
+
+```typescript
+
+const devManager = new DevelopmentManager();
+devManager.takeInterview();
+
+const marketingManager = new MarketingManager();
+marketingManager.takeInterview();
+```
