@@ -212,3 +212,24 @@ console.log(ironExpert.getDescription()); // Output: I can only fit iron doors
 ## 👷 Builder
 
 Этот паттерн помогает победить анти-паттерн `telescoping constructor`, вместо огромного количества входных параметров в конструктор, мы передаём объект, при этом создаётся вспомогательный класс Builder, который упрощает создание экземпляра объекта
+
+```typescript
+class Burger {
+    protected size: string;
+    protected cheese: boolean;
+    protected pepperoni: boolean;
+    protected lettuce: boolean;
+    protected tomato: boolean;
+
+    constructor(builder: BurgerBuilder) {
+        this.size = builder.size;
+        this.cheese = builder.cheese;
+        this.pepperoni = builder.pepperoni;
+        this.lettuce = builder.lettuce;
+        this.tomato = builder.tomato;
+    }
+}
+```
+
+
+
