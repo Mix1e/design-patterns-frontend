@@ -6,7 +6,7 @@
 | [[README#🏠 Simple Factory \| Simple Factory]]                    | [Adapter](app://obsidian.md/index.html#-adapter)                                      | [Chain of Responsibility](app://obsidian.md/index.html#-chain-of-responsibility)      |
 | [[README#🏭 Factory Method\|Factory Method]]                      | [Bridge](app://obsidian.md/index.html#-bridge)                                        | [Command](app://obsidian.md/index.html#-command)                                      |
 | [[README#🔨 Abstract Factory\|Abstract Factory]]                  | [Composite](app://obsidian.md/index.html#-composite)                                  | [Iterator](app://obsidian.md/index.html#-iterator)                                    |
-| [[README#design-patterns-frontend \| Builder]]                    | [Decorator](app://obsidian.md/index.html#-decorator)                                  | [Mediator](app://obsidian.md/index.html#-mediator)                                    |
+| [[README#👷 Builder\| Builder]]                                   | [Decorator](app://obsidian.md/index.html#-decorator)                                  | [Mediator](app://obsidian.md/index.html#-mediator)                                    |
 | [[README#🐑 Prototype \| Prototype]]                              | [Facade](app://obsidian.md/index.html#-facade)                                        | [Memento](app://obsidian.md/index.html#-memento)                                      |
 | Singleton (не практичный)                                         | [Flyweight](app://obsidian.md/index.html#-flyweight)                                  | [Observer](app://obsidian.md/index.html#-observer)                                    |
 |                                                                   | [Proxy](app://obsidian.md/index.html#-proxy)                                          | [Visitor](app://obsidian.md/index.html#-visitor)                                      |
@@ -281,3 +281,33 @@ const burger = new BurgerBuilder(9)
 ```
 
 ## 🐑 Prototype
+Суть паттерна заключается в создании метода внутри класса, который позволяет полностью скопировать другой класс
+```typescript
+interface Prototype<T> {
+    clone(): T
+}
+
+class UserHistory implements Prototype<UserHistory> {
+    createdAt: Date;
+    constructor(public email: string, public name: string) {
+        this.createdAt = new Date();
+    }
+
+    clone(): UserHistory {
+        let target = new UserHistory(this.email, this.name);
+        target.createdAt = this.createdAt;
+        return target
+    }
+}
+
+let user = new UserHistory('vladislav.pestsov@gmail.com', 'Vladislav')
+console.log(user);
+let user2 = user.clone()
+console.log(user2)
+```
+
+# Structural Design Patterns
+
+>Паттерны, созданные на создание связи между сущностями
+
+
