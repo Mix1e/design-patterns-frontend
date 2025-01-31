@@ -162,7 +162,7 @@ class Carpenter implements DoorFittingExpert {
 }
 ```
 
-Создаётся фабрика, которая 
+И вот интерфейс абстрактной фабрики
 ```typescript
 interface DoorFactory {
     makeDoor(): Door;
