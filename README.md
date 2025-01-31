@@ -1,18 +1,18 @@
 # design-patterns-frontend
 Моя интерпретация паттернов проектирования для frontend на typescript
 
-| [[README#Creational Design Patterns\|Creational Design Patterns]] | [Structural Design Patterns](app://obsidian.md/index.html#structural-design-patterns) | [Behavioral Design Patterns](app://obsidian.md/index.html#behavioral-design-patterns) |
-| :---------------------------------------------------------------- | :------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------ |
-| [[README#🏠 Simple Factory \| Simple Factory]]                    | [Adapter](app://obsidian.md/index.html#-adapter)                                      | [Chain of Responsibility](app://obsidian.md/index.html#-chain-of-responsibility)      |
-| [[README#🏭 Factory Method\|Factory Method]]                      | [Bridge](app://obsidian.md/index.html#-bridge)                                        | [Command](app://obsidian.md/index.html#-command)                                      |
-| [[README#🔨 Abstract Factory\|Abstract Factory]]                  | [Composite](app://obsidian.md/index.html#-composite)                                  | [Iterator](app://obsidian.md/index.html#-iterator)                                    |
-| [[README#👷 Builder\| Builder]]                                   | [Decorator](app://obsidian.md/index.html#-decorator)                                  | [Mediator](app://obsidian.md/index.html#-mediator)                                    |
-| [[README#🐑 Prototype \| Prototype]]                              | [Facade](app://obsidian.md/index.html#-facade)                                        | [Memento](app://obsidian.md/index.html#-memento)                                      |
-| Singleton (не практичный)                                         | [Flyweight](app://obsidian.md/index.html#-flyweight)                                  | [Observer](app://obsidian.md/index.html#-observer)                                    |
-|                                                                   | [Proxy](app://obsidian.md/index.html#-proxy)                                          | [Visitor](app://obsidian.md/index.html#-visitor)                                      |
-|                                                                   |                                                                                       | [Strategy](app://obsidian.md/index.html#-strategy)                                    |
-|                                                                   |                                                                                       | [State](app://obsidian.md/index.html#-state)                                          |
-|                                                                   |                                                                                       | [Template Method](app://obsidian.md/index.html#-template-method)                      |
+| [[README#Creational Design Patterns\|Creational Design Patterns]] | [[README#Structural Design Patterns\| Structural Design Patterns]] | [Behavioral Design Patterns](app://obsidian.md/index.html#behavioral-design-patterns) |
+| :---------------------------------------------------------------- | :----------------------------------------------------------------- | :------------------------------------------------------------------------------------ |
+| [[README#🏠 Simple Factory \| Simple Factory]]                    | [Adapter](app://obsidian.md/index.html#-adapter)                   | [Chain of Responsibility](app://obsidian.md/index.html#-chain-of-responsibility)      |
+| [[README#🏭 Factory Method\|Factory Method]]                      | [Bridge](app://obsidian.md/index.html#-bridge)                     | [Command](app://obsidian.md/index.html#-command)                                      |
+| [[README#🔨 Abstract Factory\|Abstract Factory]]                  | [Composite](app://obsidian.md/index.html#-composite)               | [Iterator](app://obsidian.md/index.html#-iterator)                                    |
+| [[README#👷 Builder\| Builder]]                                   | [Decorator](app://obsidian.md/index.html#-decorator)               | [Mediator](app://obsidian.md/index.html#-mediator)                                    |
+| [[README#🐑 Prototype \| Prototype]]                              | [Facade](app://obsidian.md/index.html#-facade)                     | [Memento](app://obsidian.md/index.html#-memento)                                      |
+| Singleton (не практичный)                                         | [Flyweight](app://obsidian.md/index.html#-flyweight)               | [Observer](app://obsidian.md/index.html#-observer)                                    |
+|                                                                   | [Proxy](app://obsidian.md/index.html#-proxy)                       | [Visitor](app://obsidian.md/index.html#-visitor)                                      |
+|                                                                   |                                                                    | [Strategy](app://obsidian.md/index.html#-strategy)                                    |
+|                                                                   |                                                                    | [State](app://obsidian.md/index.html#-state)                                          |
+|                                                                   |                                                                    | [Template Method](app://obsidian.md/index.html#-template-method)                      |
 
 # Creational Design Patterns
 ## 🏠 Simple Factory
@@ -310,4 +310,4 @@ console.log(user2)
 
 >Паттерны, созданные на создание связи между сущностями
 
-
+## 🔌 Adapter
