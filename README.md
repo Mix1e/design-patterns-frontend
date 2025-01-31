@@ -7,7 +7,7 @@
 | [[README#🏭 Factory Method\|Factory Method]]                      | [Bridge](app://obsidian.md/index.html#-bridge)                                        | [Command](app://obsidian.md/index.html#-command)                                      |
 | [[README#🔨 Abstract Factory\|Abstract Factory]]                  | [Composite](app://obsidian.md/index.html#-composite)                                  | [Iterator](app://obsidian.md/index.html#-iterator)                                    |
 | [[README#design-patterns-frontend \| Builder]]                    | [Decorator](app://obsidian.md/index.html#-decorator)                                  | [Mediator](app://obsidian.md/index.html#-mediator)                                    |
-| [Prototype](app://obsidian.md/index.html#-prototype)              | [Facade](app://obsidian.md/index.html#-facade)                                        | [Memento](app://obsidian.md/index.html#-memento)                                      |
+| [[README#🐑 Prototype \| Prototype]]                              | [Facade](app://obsidian.md/index.html#-facade)                                        | [Memento](app://obsidian.md/index.html#-memento)                                      |
 | Singleton (не практичный)                                         | [Flyweight](app://obsidian.md/index.html#-flyweight)                                  | [Observer](app://obsidian.md/index.html#-observer)                                    |
 |                                                                   | [Proxy](app://obsidian.md/index.html#-proxy)                                          | [Visitor](app://obsidian.md/index.html#-visitor)                                      |
 |                                                                   |                                                                                       | [Strategy](app://obsidian.md/index.html#-strategy)                                    |
@@ -213,6 +213,7 @@ console.log(ironExpert.getDescription()); // Output: I can only fit iron doors
 
 Этот паттерн помогает победить анти-паттерн `telescoping constructor`, вместо огромного количества входных параметров в конструктор, мы передаём объект, при этом создаётся вспомогательный класс Builder, который упрощает создание экземпляра объекта
 
+Класс объекта
 ```typescript
 class Burger {
     protected size: string;
@@ -231,5 +232,52 @@ class Burger {
 }
 ```
 
+Билдер этого объекта
+```typescript
+class BurgerBuilder {
+    size: number;
+    cheese: boolean = false;
+    pepperoni: boolean = false;
+    lettuce: boolean = false;
+    tomato: boolean = false;
 
+    constructor(size: number) {
+        this.size = size;
+    }
 
+    addPepperoni(): this {
+        this.pepperoni = true;
+        return this;
+    }
+
+    addLettuce(): this {
+        this.lettuce = true;
+        return this;
+    }
+
+    addCheese(): this {
+        this.cheese = true;
+        return this;
+    }
+
+    addTomato(): this {
+        this.tomato = true;
+        return this;
+    }
+
+    build(): Burger {
+        return new Burger(this);
+    }
+}
+```
+
+Пример создания объекта
+```typescript
+const burger = new BurgerBuilder(9)
+                    .addPepperoni()
+                    .addLettuce()
+                    .addTomato()
+                    .build();
+```
+
+## 🐑 Prototype
