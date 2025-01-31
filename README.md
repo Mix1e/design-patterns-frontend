@@ -64,3 +64,5 @@ console.log('Height:', door.getHeight());
 const door2 = DoorFactory.makeDoor(50, 100);
 ```
 ## 🏭 Factory Method
+---
+Делегирование логики создания дочерним классам
