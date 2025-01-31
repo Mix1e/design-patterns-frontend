@@ -6,7 +6,7 @@
 | [[README#🏠 Simple Factory \| Simple Factory]]                    | [Adapter](app://obsidian.md/index.html#-adapter)                                      | [Chain of Responsibility](app://obsidian.md/index.html#-chain-of-responsibility)      |
 | [[README#🏭 Factory Method\|Factory Method]]                      | [Bridge](app://obsidian.md/index.html#-bridge)                                        | [Command](app://obsidian.md/index.html#-command)                                      |
 | [[README#🔨 Abstract Factory\|Abstract Factory]]                  | [Composite](app://obsidian.md/index.html#-composite)                                  | [Iterator](app://obsidian.md/index.html#-iterator)                                    |
-| [Builder](app://obsidian.md/index.html#-builder)                  | [Decorator](app://obsidian.md/index.html#-decorator)                                  | [Mediator](app://obsidian.md/index.html#-mediator)                                    |
+| [[README#design-patterns-frontend \| Builder]]                    | [Decorator](app://obsidian.md/index.html#-decorator)                                  | [Mediator](app://obsidian.md/index.html#-mediator)                                    |
 | [Prototype](app://obsidian.md/index.html#-prototype)              | [Facade](app://obsidian.md/index.html#-facade)                                        | [Memento](app://obsidian.md/index.html#-memento)                                      |
 | Singleton (не практичный)                                         | [Flyweight](app://obsidian.md/index.html#-flyweight)                                  | [Observer](app://obsidian.md/index.html#-observer)                                    |
 |                                                                   | [Proxy](app://obsidian.md/index.html#-proxy)                                          | [Visitor](app://obsidian.md/index.html#-visitor)                                      |
@@ -189,3 +189,26 @@ class IronDoorFactory implements DoorFactory {
     }
 }
 ```
+
+```typescript
+// Usage
+const woodenFactory = new WoodenDoorFactory();
+const woodenDoor = woodenFactory.makeDoor();
+const woodenExpert = woodenFactory.makeFittingExpert();
+
+console.log(woodenDoor.getDescription());  // Output: I am a wooden door
+console.log(woodenExpert.getDescription()); // Output: I can only fit wooden doors
+
+const ironFactory = new IronDoorFactory();
+const ironDoor = ironFactory.makeDoor();
+const ironExpert = ironFactory.makeFittingExpert();
+
+console.log(ironDoor.getDescription());  // Output: I am an iron door
+console.log(ironExpert.getDescription()); // Output: I can only fit iron doors
+```
+
+Использовать такую фабрику стоит когда есть некоторая связь между сущностями
+
+## 👷 Builder
+
+Этот паттерн помогает победить анти-паттерн `telescoping constructor`, вместо огромного количества входных параметров в конструктор, мы передаём объект, при этом создаётся вспомогательный класс Builder, который упрощает создание экземпляра объекта
