@@ -680,3 +680,23 @@ computer.turnOff(); // Bup bup buzzz! Haah! Zzzzz
 ```
 
 ## 🍃 Flyweight
+
+```typescript
+// Всё, что кэшируется, является легковесом (flyweight).
+// Виды чая здесь являются легковесами.
+class KarakTea {}
+
+// Действует как фабрика и сохраняет чай
+class TeaMaker {
+    private availableTea: Record<string, KarakTea> = {};
+
+    make(preference: string): KarakTea {
+        if (!this.availableTea[preference]) {
+            this.availableTea[preference] = new KarakTea();
+        }
+
+        return this.availableTea[preference];
+    }
+}
+```
+
