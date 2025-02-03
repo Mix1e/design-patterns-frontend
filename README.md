@@ -680,6 +680,7 @@ computer.turnOff(); // Bup bup buzzz! Haah! Zzzzz
 ```
 
 ## 🍃 Flyweight
+> Суть паттерна в переиспользовании ресурсов в целях экономии памяти
 
 ```typescript
 // Anything that will be cached is flyweight.
