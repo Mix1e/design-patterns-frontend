@@ -441,3 +441,6 @@ console.log(about.getContent()); // "About page in Dark Black"
 console.log(careers.getContent()); // "Careers page in Dark Black"
 ```
 
+## 🌿 Composite
+>Данный паттерн позволяет единообразно взаимодействовать с разными объектами
+
