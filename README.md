@@ -523,7 +523,7 @@ class Organization {
 ```
 
 ## ☕ Decorator
-> Паттерн позволяет динамически во время выполнения программы изменять поведение объекта подставляя его под другой 
+> Паттерн позволяет динамически во время выполнения программы изменять поведение объекта подставляя его в другой декоратор (аддон) 
 
 ```typescript
 interface Coffee {
@@ -540,3 +540,77 @@ class SimpleCoffee implements Coffee {
         return 'Simple coffee';
     }
 }
+```
+
+```typescript
+class MilkCoffee implements Coffee {
+    private coffee: Coffee;
+
+    constructor(coffee: Coffee) {
+        this.coffee = coffee;
+    }
+
+    getCost(): number {
+        return this.coffee.getCost() + 2;
+    }
+
+    getDescription(): string {
+        return this.coffee.getDescription() + ', milk';
+    }
+}
+
+class WhipCoffee implements Coffee {
+    private coffee: Coffee;
+
+    constructor(coffee: Coffee) {
+        this.coffee = coffee;
+    }
+
+    getCost(): number {
+        return this.coffee.getCost() + 5;
+    }
+
+    getDescription(): string {
+        return this.coffee.getDescription() + ', whip';
+    }
+}
+
+class VanillaCoffee implements Coffee {
+    private coffee: Coffee;
+
+    constructor(coffee: Coffee) {
+        this.coffee = coffee;
+    }
+
+    getCost(): number {
+        return this.coffee.getCost() + 3;
+    }
+
+    getDescription(): string {
+        return this.coffee.getDescription() + ', vanilla';
+    }
+}
+```
+
+Использование:
+```typescript
+const someCoffee: Coffee = new SimpleCoffee();
+console.log(someCoffee.getCost()); // 10
+console.log(someCoffee.getDescription()); // Simple coffee
+
+const milkCoffee: Coffee = new MilkCoffee(someCoffee);
+console.log(milkCoffee.getCost()); // 12
+console.log(milkCoffee.getDescription()); // Simple coffee, milk
+
+const whipCoffee: Coffee = new WhipCoffee(milkCoffee);
+console.log(whipCoffee.getCost()); // 17
+console.log(whipCoffee.getDescription()); // Simple coffee, milk, whip
+
+const vanillaCoffee: Coffee = new VanillaCoffee(whipCoffee);
+console.log(vanillaCoffee.getCost()); // 20
+console.log(vanillaCoffee.getDescription()); // Simple coffee, milk, whip, vanilla
+```
+
+Таким образом, изначальный класс обрастаем классами обёртками, который на вход принимают `Coffee like class`
+
+## 📦 Facade
