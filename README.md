@@ -3,8 +3,8 @@
 
 | [[README#Creational Design Patterns\|Creational Design Patterns]] | [[README#Structural Design Patterns\| Structural Design Patterns]] | [Behavioral Design Patterns](app://obsidian.md/index.html#behavioral-design-patterns) |
 | :---------------------------------------------------------------- | :----------------------------------------------------------------- | :------------------------------------------------------------------------------------ |
-| [[README#🏠 Simple Factory \| Simple Factory]]                    | [Adapter](app://obsidian.md/index.html#-adapter)                   | [Chain of Responsibility](app://obsidian.md/index.html#-chain-of-responsibility)      |
-| [[README#🏭 Factory Method\|Factory Method]]                      | [Bridge](app://obsidian.md/index.html#-bridge)                     | [Command](app://obsidian.md/index.html#-command)                                      |
+| [[README#🏠 Simple Factory \| Simple Factory]]                    | [[README#🔌 Adapter \| Adapter]]                                   | [Chain of Responsibility](app://obsidian.md/index.html#-chain-of-responsibility)      |
+| [[README#🏭 Factory Method\|Factory Method]]                      | [[README#🚡 Bridge \| Bridge]]                                     | [Command](app://obsidian.md/index.html#-command)                                      |
 | [[README#🔨 Abstract Factory\|Abstract Factory]]                  | [Composite](app://obsidian.md/index.html#-composite)               | [Iterator](app://obsidian.md/index.html#-iterator)                                    |
 | [[README#👷 Builder\| Builder]]                                   | [Decorator](app://obsidian.md/index.html#-decorator)               | [Mediator](app://obsidian.md/index.html#-mediator)                                    |
 | [[README#🐑 Prototype \| Prototype]]                              | [Facade](app://obsidian.md/index.html#-facade)                     | [Memento](app://obsidian.md/index.html#-memento)                                      |
@@ -313,3 +313,95 @@ console.log(user2)
 ## 🔌 Adapter
 > Класс адаптер позволяет обернуть несоответствующий интерфейсу объект, чтобы он соответствовал другому классу
 
+```typescript
+interface Lion {
+    roar(): void;
+}
+
+class AfricanLion implements Lion {
+    roar(): void {
+        // Implementation for African Lion's roar
+    }
+}
+
+class AsianLion implements Lion {
+    roar(): void {
+        // Implementation for Asian Lion's roar
+    }
+}
+```
+
+```typescript
+class Hunter {
+    hunt(lion: Lion): void {
+        lion.roar();
+    }
+}
+```
+
+При этом, мы можем добавить дикую собаку, которая гавкает, но охотник также может на неё охотиться, чтобы добавиться желаемого поведения - пишем класс адаптер
+```typescript
+// This needs to be added to the game
+class WildDog {
+    bark(): void {
+        // Implementation of bark
+    }
+}
+
+// Adapter around wild dog to make it compatible with our game
+class WildDogAdapter implements Lion {
+    protected dog: WildDog;
+
+    constructor(dog: WildDog) {
+        this.dog = dog;
+    }
+
+    roar(): void {
+        this.dog.bark();
+    }
+}
+```
+
+Использование
+```typescript
+const wildDog = new WildDog();
+const wildDogAdapter = new WildDogAdapter(wildDog);
+
+const hunter = new Hunter();
+hunter.hunt(wildDogAdapter);
+```
+
+## 🚡 Bridge
+>Это паттерн суть которого заключается в отделении абстракции от реализации, чтобы они могли изменяться независимо друг от друга
+ 
+![[Pasted image 20250203143740.png]]
+
+```typescript
+interface WebPage {
+    getContent(): string;
+}
+
+class About implements WebPage {
+    protected theme: Theme;
+
+    constructor(theme: Theme) {
+        this.theme = theme;
+    }
+
+    getContent(): string {
+        return "About page in " + this.theme.getColor();
+    }
+}
+
+class Careers implements WebPage {
+    protected theme: Theme;
+
+    constructor(theme: Theme) {
+        this.theme = theme;
+    }
+
+    getContent(): string {
+        return "Careers page in " + this.theme.getColor();
+    }
+}
+```
