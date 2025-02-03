@@ -1,23 +1,23 @@
 # design-patterns-frontend
 Моя интерпретация паттернов проектирования для frontend на typescript
 
-| [[README#Creational Design Patterns\|Creational Design Patterns]] | [[README#Structural Design Patterns\| Structural Design Patterns]] | [Behavioral Design Patterns](app://obsidian.md/index.html#behavioral-design-patterns) |
-| :---------------------------------------------------------------- | :----------------------------------------------------------------- | :------------------------------------------------------------------------------------ |
-| [[README#🏠 Simple Factory \| Simple Factory]]                    | [[README#🔌 Adapter \| Adapter]]                                   | [Chain of Responsibility](app://obsidian.md/index.html#-chain-of-responsibility)      |
-| [[README#🏭 Factory Method\|Factory Method]]                      | [[README#🚡 Bridge \| Bridge]]                                     | [Command](app://obsidian.md/index.html#-command)                                      |
-| [[README#🔨 Abstract Factory\|Abstract Factory]]                  | [[README#🌿 Composite \| Composite]]                               | [Iterator](app://obsidian.md/index.html#-iterator)                                    |
-| [[README#👷 Builder\| Builder]]                                   | [[README#☕ Decorator \| Decorator]]                                | [Mediator](app://obsidian.md/index.html#-mediator)                                    |
-| [[README#🐑 Prototype \| Prototype]]                              | [[README#📦 Facade\| Facade]]                                      | [Memento](app://obsidian.md/index.html#-memento)                                      |
-| Singleton (не практичный)                                         | [[README#🍃 Flyweight \| Flyweight]]                               | [Observer](app://obsidian.md/index.html#-observer)                                    |
-|                                                                   | [Proxy](app://obsidian.md/index.html#-proxy)                       | [Visitor](app://obsidian.md/index.html#-visitor)                                      |
-|                                                                   |                                                                    | [Strategy](app://obsidian.md/index.html#-strategy)                                    |
-|                                                                   |                                                                    | [State](app://obsidian.md/index.html#-state)                                          |
-|                                                                   |                                                                    | [Template Method](app://obsidian.md/index.html#-template-method)                      |
+| [[README#Creational Design Patterns\|Creational Design Patterns]] | [[README#Structural Design Patterns\| Structural Design Patterns]] | [[README#Behavioral Design Patterns \| Behavioral Design Patterns]]              |
+| :---------------------------------------------------------------- | :----------------------------------------------------------------- | :------------------------------------------------------------------------------- |
+| [[README#🏠 Simple Factory \| Simple Factory]]                    | [[README#🔌 Adapter \| Adapter]]                                   | [Chain of Responsibility](app://obsidian.md/index.html#-chain-of-responsibility) |
+| [[README#🏭 Factory Method\|Factory Method]]                      | [[README#🚡 Bridge \| Bridge]]                                     | [Command](app://obsidian.md/index.html#-command)                                 |
+| [[README#🔨 Abstract Factory\|Abstract Factory]]                  | [[README#🌿 Composite \| Composite]]                               | [Iterator](app://obsidian.md/index.html#-iterator)                               |
+| [[README#👷 Builder\| Builder]]                                   | [[README#☕ Decorator \| Decorator]]                                | [Mediator](app://obsidian.md/index.html#-mediator)                               |
+| [[README#🐑 Prototype \| Prototype]]                              | [[README#📦 Facade\| Facade]]                                      | [Memento](app://obsidian.md/index.html#-memento)                                 |
+| Singleton (не практичный)                                         | [[README#🍃 Flyweight \| Flyweight]]                               | [Observer](app://obsidian.md/index.html#-observer)                               |
+|                                                                   | [[README#🎱 Proxy \| Proxy]]                                       | [Visitor](app://obsidian.md/index.html#-visitor)                                 |
+|                                                                   |                                                                    | [Strategy](app://obsidian.md/index.html#-strategy)                               |
+|                                                                   |                                                                    | [State](app://obsidian.md/index.html#-state)                                     |
+|                                                                   |                                                                    | [Template Method](app://obsidian.md/index.html#-template-method)                 |
 
 # Creational Design Patterns
-## 🏠 Simple Factory
 ---
-Простая фабрика обеспечивает создание объекта. Можно использовать чтобы предотвратить дублирования логики создания объекта.
+## 🏠 Simple Factory
+> Простая фабрика обеспечивает создание объекта. Можно использовать чтобы предотвратить дублирования логики создания объекта.
 ```typescript
 interface Door {
     getWidth(): number;
@@ -64,8 +64,7 @@ console.log('Height:', door.getHeight());
 const door2 = DoorFactory.makeDoor(50, 100);
 ```
 ## 🏭 Factory Method
----
-Делегирование логики создания дочерним классам
+> Делегирование логики создания дочерним классам
 
 ```typescript
 interface Interviewer {
@@ -122,7 +121,7 @@ marketingManager.takeInterview();
 ```
 
 ## 🔨 Abstract Factory
-Фабрика фабрик, паттерн при котором инкапсулируются группы фабрик с общей идеей, не завязываясь на конкретных классах.
+>Фабрика фабрик, паттерн при котором инкапсулируются группы фабрик с общей идеей, не завязываясь на конкретных классах.
 
 Есть интерфейс `Door` и несколько его реализаций
 ```typescript
@@ -211,7 +210,7 @@ console.log(ironExpert.getDescription()); // Output: I can only fit iron doors
 
 ## 👷 Builder
 
-Этот паттерн помогает победить анти-паттерн `telescoping constructor`, вместо огромного количества входных параметров в конструктор, мы передаём объект, при этом создаётся вспомогательный класс Builder, который упрощает создание экземпляра объекта
+>Этот паттерн помогает победить анти-паттерн `telescoping constructor`, вместо огромного количества входных параметров в конструктор, мы передаём объект, при этом создаётся вспомогательный класс Builder, который упрощает создание экземпляра объекта
 
 Класс объекта
 ```typescript
@@ -281,7 +280,7 @@ const burger = new BurgerBuilder(9)
 ```
 
 ## 🐑 Prototype
-Суть паттерна заключается в создании метода внутри класса, который позволяет полностью скопировать другой класс
+>Суть паттерна заключается в создании метода внутри класса, который позволяет полностью скопировать другой класс
 ```typescript
 interface Prototype<T> {
     clone(): T
@@ -307,7 +306,7 @@ console.log(user2)
 ```
 
 # Structural Design Patterns
-
+---
 >Паттерны, созданные на создание связи между сущностями
 
 ## 🔌 Adapter
@@ -736,3 +735,61 @@ shop.serve();
 // Serving tea to table# 5
 ```
 
+## 🎱 Proxy
+> В этом паттерне класс предоставляет функциональность другого класса
+
+```typescript
+interface Door {
+    open(): void;
+    close(): void;
+}
+
+class LabDoor implements Door {
+    open(): void {
+        console.log("Opening lab door");
+    }
+
+    close(): void {
+        console.log("Closing the lab door");
+    }
+}
+```
+
+```typescript
+class SecuredDoor implements Door {
+    private door: Door;
+
+    constructor(door: Door) {
+        this.door = door;
+    }
+
+    open(password: string): void {
+        if (this.authenticate(password)) {
+            this.door.open();
+        } else {
+            console.log("Big no! It ain't possible.");
+        }
+    }
+
+    private authenticate(password: string): boolean {
+        return password === '$ecr@t';
+    }
+
+    close(): void {
+        this.door.close();
+    }
+}
+```
+
+```typescript
+const door = new SecuredDoor(new LabDoor());
+
+door.open('invalid'); // Big no! It ain't possible.
+door.open('$ecr@t');   // Opening lab door
+door.close();         // Closing lab door
+```
+
+Также этот паттерн, к примеру, можно использовать для кеширования данных
+
+# Behavioral Design Patterns
+---
