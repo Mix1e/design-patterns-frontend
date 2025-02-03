@@ -682,13 +682,13 @@ computer.turnOff(); // Bup bup buzzz! Haah! Zzzzz
 ## 🍃 Flyweight
 
 ```typescript
-// Всё, что кэшируется, является легковесом (flyweight).
-// Виды чая здесь являются легковесами.
+// Anything that will be cached is flyweight.
+// Types of tea here will be flyweights.
 class KarakTea {}
 
-// Действует как фабрика и сохраняет чай
+// Acts as a factory and saves the tea
 class TeaMaker {
-    private availableTea: Record<string, KarakTea> = {};
+    private availableTea: { [key: string]: KarakTea } = {};
 
     make(preference: string): KarakTea {
         if (!this.availableTea[preference]) {
@@ -698,5 +698,40 @@ class TeaMaker {
         return this.availableTea[preference];
     }
 }
+```
+
+```typescript
+class TeaShop {
+    private orders: { [key: number]: KarakTea } = {};
+    private teaMaker: TeaMaker;
+
+    constructor(teaMaker: TeaMaker) {
+        this.teaMaker = teaMaker;
+    }
+
+    takeOrder(teaType: string, table: number): void {
+        this.orders[table] = this.teaMaker.make(teaType);
+    }
+
+    serve(): void {
+        for (const table in this.orders) {
+            console.log(`Serving tea to table# ${table}`);
+        }
+    }
+}
+```
+
+```typescript
+const teaMaker = new TeaMaker();
+const shop = new TeaShop(teaMaker);
+
+shop.takeOrder('less sugar', 1);
+shop.takeOrder('more milk', 2);
+shop.takeOrder('without sugar', 5);
+
+shop.serve();
+// Serving tea to table# 1
+// Serving tea to table# 2
+// Serving tea to table# 5
 ```
 
