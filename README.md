@@ -444,3 +444,83 @@ console.log(careers.getContent()); // "Careers page in Dark Black"
 ## 🌿 Composite
 >Данный паттерн позволяет единообразно взаимодействовать с разными объектами
 
+```typescript
+interface Employee {
+    getName(): string;
+    setSalary(salary: number): void;
+    getSalary(): number;
+    getRoles(): string[];
+}
+
+class Developer implements Employee {
+    private salary: number;
+    private name: string;
+    private roles: string[] = [];
+
+    constructor(name: string, salary: number) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    getName(): string {
+        return this.name;
+    }
+
+    setSalary(salary: number): void {
+        this.salary = salary;
+    }
+
+    getSalary(): number {
+        return this.salary;
+    }
+
+    getRoles(): string[] {
+        return this.roles;
+    }
+}
+
+class Designer implements Employee {
+    private salary: number;
+    private name: string;
+    private roles: string[] = [];
+
+    constructor(name: string, salary: number) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    getName(): string {
+        return this.name;
+    }
+
+    setSalary(salary: number): void {
+        this.salary = salary;
+    }
+
+    getSalary(): number {
+        return this.salary;
+    }
+
+    getRoles(): string[] {
+        return this.roles;
+    }
+}
+```
+
+При наличии разных типов работников, у нас есть организация, которой не так важны различия между работниками, к примеру, когда вопрос касается денег:
+```typescript
+class Organization {
+    private employees: Employee[] = [];
+
+    addEmployee(employee: Employee): void {
+        this.employees.push(employee);
+    }
+
+    getNetSalaries(): number {
+        return this.employees.reduce((total, employee) => total + employee.getSalary(), 0);
+    }
+}
+```
+
+## ☕ Decorator
+>
