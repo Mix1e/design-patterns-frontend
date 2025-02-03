@@ -376,6 +376,7 @@ hunter.hunt(wildDogAdapter);
  
 ![[Pasted image 20250203143740.png]]
 
+Есть иерархия страниц
 ```typescript
 interface WebPage {
     getContent(): string;
@@ -405,3 +406,29 @@ class Careers implements WebPage {
     }
 }
 ```
+
+Также есть иерархия тем
+```typescript
+interface Theme {
+    getColor(): string;
+}
+
+class DarkTheme implements Theme {
+    getColor(): string {
+        return 'Dark Black';
+    }
+}
+
+class LightTheme implements Theme {
+    getColor(): string {
+        return 'Off white';
+    }
+}
+
+class AquaTheme implements Theme {
+    getColor(): string {
+        return 'Light blue';
+    }
+}
+```
+
