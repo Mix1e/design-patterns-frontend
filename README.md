@@ -5,10 +5,10 @@
 | :---------------------------------------------------------------- | :----------------------------------------------------------------- | :------------------------------------------------------------------------------------ |
 | [[README#🏠 Simple Factory \| Simple Factory]]                    | [[README#🔌 Adapter \| Adapter]]                                   | [Chain of Responsibility](app://obsidian.md/index.html#-chain-of-responsibility)      |
 | [[README#🏭 Factory Method\|Factory Method]]                      | [[README#🚡 Bridge \| Bridge]]                                     | [Command](app://obsidian.md/index.html#-command)                                      |
-| [[README#🔨 Abstract Factory\|Abstract Factory]]                  | [Composite](app://obsidian.md/index.html#-composite)               | [Iterator](app://obsidian.md/index.html#-iterator)                                    |
-| [[README#👷 Builder\| Builder]]                                   | [Decorator](app://obsidian.md/index.html#-decorator)               | [Mediator](app://obsidian.md/index.html#-mediator)                                    |
-| [[README#🐑 Prototype \| Prototype]]                              | [Facade](app://obsidian.md/index.html#-facade)                     | [Memento](app://obsidian.md/index.html#-memento)                                      |
-| Singleton (не практичный)                                         | [Flyweight](app://obsidian.md/index.html#-flyweight)               | [Observer](app://obsidian.md/index.html#-observer)                                    |
+| [[README#🔨 Abstract Factory\|Abstract Factory]]                  | [[README#🌿 Composite \| Composite]]                               | [Iterator](app://obsidian.md/index.html#-iterator)                                    |
+| [[README#👷 Builder\| Builder]]                                   | [[README#☕ Decorator \| Decorator]]                                | [Mediator](app://obsidian.md/index.html#-mediator)                                    |
+| [[README#🐑 Prototype \| Prototype]]                              | [[README#📦 Facade\| Facade]]                                      | [Memento](app://obsidian.md/index.html#-memento)                                      |
+| Singleton (не практичный)                                         | [[README#🍃 Flyweight \| Flyweight]]                               | [Observer](app://obsidian.md/index.html#-observer)                                    |
 |                                                                   | [Proxy](app://obsidian.md/index.html#-proxy)                       | [Visitor](app://obsidian.md/index.html#-visitor)                                      |
 |                                                                   |                                                                    | [Strategy](app://obsidian.md/index.html#-strategy)                                    |
 |                                                                   |                                                                    | [State](app://obsidian.md/index.html#-state)                                          |
@@ -617,3 +617,66 @@ console.log(vanillaCoffee.getDescription()); // Simple coffee, milk, whip, vanil
 ## 📦 Facade
 > Обеспечивает упрощённый интерфейс для взаимодействия с подсистемами
 
+```typescript
+class Computer {
+    getElectricShock(): void {
+        console.log("Ouch!");
+    }
+
+    makeSound(): void {
+        console.log("Beep beep!");
+    }
+
+    showLoadingScreen(): void {
+        console.log("Loading..");
+    }
+
+    bam(): void {
+        console.log("Ready to be used!");
+    }
+
+    closeEverything(): void {
+        console.log("Bup bup bup buzzzz!");
+    }
+
+    sooth(): void {
+        console.log("Zzzzz");
+    }
+
+    pullCurrent(): void {
+        console.log("Haaah!");
+    }
+}
+```
+
+```typescript
+class ComputerFacade {
+    private computer: Computer;
+
+    constructor(computer: Computer) {
+        this.computer = computer;
+    }
+
+    turnOn(): void {
+        this.computer.getElectricShock();
+        this.computer.makeSound();
+        this.computer.showLoadingScreen();
+        this.computer.bam();
+    }
+
+    turnOff(): void {
+        this.computer.closeEverything();
+        this.computer.pullCurrent();
+        this.computer.sooth();
+    }
+}
+```
+
+```typescript
+const computer = new ComputerFacade(new Computer());
+
+computer.turnOn(); // Ouch! Beep beep! Loading.. Ready to be used!
+computer.turnOff(); // Bup bup buzzz! Haah! Zzzzz
+```
+
+## 🍃 Flyweight
