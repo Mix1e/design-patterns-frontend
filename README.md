@@ -523,4 +523,20 @@ class Organization {
 ```
 
 ## ☕ Decorator
-> Паттерн позволяет динамически во время выполнения программы изменять поведение объекта
+> Паттерн позволяет динамически во время выполнения программы изменять поведение объекта подставляя его под другой 
+
+```typescript
+interface Coffee {
+    getCost(): number;
+    getDescription(): string;
+}
+
+class SimpleCoffee implements Coffee {
+    getCost(): number {
+        return 10;
+    }
+
+    getDescription(): string {
+        return 'Simple coffee';
+    }
+}
