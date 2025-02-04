@@ -1215,3 +1215,21 @@ class EmploymentAgency implements Observable {
     }
 }
 ```
+
+```typescript
+// Create subscribers
+const johnDoe = new JobSeeker('John Doe');
+const janeDoe = new JobSeeker('Jane Doe');
+
+// Create publisher and attach subscribers
+const jobPostings = new EmploymentAgency();
+jobPostings.attach(johnDoe);
+jobPostings.attach(janeDoe);
+
+// Add a new job and see if subscribers get notified
+jobPostings.addJob(new JobPost('Software Engineer'));
+
+// Output
+// Hi John Doe! New job posted: Software Engineer
+// Hi Jane Doe! New job posted: Software Engineer
+```
