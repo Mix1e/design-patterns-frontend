@@ -802,7 +802,7 @@ abstract class Account {
         this.successor = account;
     }
 
-    public pay(amountToPay: number): void {
+    public pay(amountToPay: number): void | never {
         if (this.canPay(amountToPay)) {
             console.log(`Paid ${amountToPay} using ${this.constructor.name}`);
         } else if (this.successor) {
