@@ -872,3 +872,16 @@ bank.pay(259);
 
 ## 👮 Command
 > 
+
+```typescript
+// Receiver
+class Bulb {
+    public turnOn(): void {
+        console.log("Bulb has been lit");
+    }
+
+    public turnOff(): void {
+        console.log("Darkness!");
+    }
+}
+```
