@@ -885,3 +885,53 @@ class Bulb {
     }
 }
 ```
+
+Есть некоторый интерфейс `Command`, который
+```typescript
+interface Command {
+    execute(): void;
+    undo(): void;
+    redo(): void;
+}
+
+// Command
+class TurnOn implements Command {
+    protected bulb: Bulb;
+
+    constructor(bulb: Bulb) {
+        this.bulb = bulb;
+    }
+
+    public execute(): void {
+        this.bulb.turnOn();
+    }
+
+    public undo(): void {
+        this.bulb.turnOff();
+    }
+
+    public redo(): void {
+        this.execute();
+    }
+}
+
+class TurnOff implements Command {
+    protected bulb: Bulb;
+
+    constructor(bulb: Bulb) {
+        this.bulb = bulb;
+    }
+
+    public execute(): void {
+        this.bulb.turnOff();
+    }
+
+    public undo(): void {
+        this.bulb.turnOn();
+    }
+
+    public redo(): void {
+        this.execute();
+    }
+}
+```
