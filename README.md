@@ -1031,6 +1031,7 @@ class StationList implements Iterable<RadioStation> {
 }
 ```
 
+Использование
 ```typescript
 const stationList = new StationList();
 
@@ -1045,3 +1046,7 @@ for (const station of stationList) {
 
 stationList.removeStation(new RadioStation(89)); // Will remove station 89
 ```
+
+Паттерн позволяет итерироваться и взаимодействовать с объектом без понимания его внутренней реализации
+
+## 👽 Mediator
