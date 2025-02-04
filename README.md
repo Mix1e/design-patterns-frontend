@@ -1233,3 +1233,22 @@ jobPostings.addJob(new JobPost('Software Engineer'));
 // Hi John Doe! New job posted: Software Engineer
 // Hi Jane Doe! New job posted: Software Engineer
 ```
+
+Наблюдатель `JobSeeker` получает от наблюдаемого объекта `EmploymentAgency`, "уведомление", т.к. наблюдаемый объект вызывает необходимый метод у всех своих наблюдателей
+
+## 🏃 Visitor
+> Позволяет добавлять опции в объект, без его изменения
+
+```typescript
+// Visitee
+interface Animal {
+    accept(operation: AnimalOperation): void;
+}
+
+// Visitor
+interface AnimalOperation {
+    visitMonkey(monkey: Monkey): void;
+    visitLion(lion: Lion): void;
+    visitDolphin(dolphin: Dolphin): void;
+}
+```
