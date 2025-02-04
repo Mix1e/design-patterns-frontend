@@ -1456,3 +1456,35 @@ class PhoneStateCalling implements PhoneState {
     }
 }
 ```
+
+Класс телефон, который переключает состояния
+``` typescript
+class Phone {
+    private currentState: PhoneState;
+
+    constructor() {
+        this.currentState = new PhoneStateIdle();
+    }
+
+    public pickUp(): void {
+        this.currentState = this.currentState.pickUp();
+    }
+
+    public hangUp(): void {
+        this.currentState = this.currentState.hangUp();
+    }
+
+    public dial(): void {
+        this.currentState = this.currentState.dial();
+    }
+}
+```
+
+```typescript
+const phone = new Phone();
+
+phone.pickUp();
+phone.dial();
+```
+
+## 📒 Template Method
