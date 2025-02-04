@@ -1170,3 +1170,48 @@ editor.getContent(); // This is the first sentence. This is second.
 Таким образом можно создавать новый экземпляр объекта в нужном нам состоянии
 
 ## 😎 Observer
+> Определение зависимости от некоторого объекта с целью реагирования на изменение его состояния
+
+```typescript
+class JobPost {
+    protected title: string;
+
+    constructor(title: string) {
+        this.title = title;
+    }
+
+    getTitle(): string {
+        return this.title;
+    }
+}
+
+class JobSeeker implements Observer {
+    protected name: string;
+
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    onJobPosted(job: JobPost): void {
+        console.log(`Hi ${this.name}! New job posted: ${job.getTitle()}`);
+    }
+}
+```
+
+```typescript
+class EmploymentAgency implements Observable {
+    protected observers: Observer[] = [];
+
+    protected notify(jobPosting: JobPost): void {
+        this.observers.forEach(observer => observer.onJobPosted(jobPosting));
+    }
+
+    attach(observer: Observer): void {
+        this.observers.push(observer);
+    }
+
+    addJob(jobPosting: JobPost): void {
+        this.notify(jobPosting);
+    }
+}
+```
