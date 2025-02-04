@@ -1252,3 +1252,67 @@ interface AnimalOperation {
     visitDolphin(dolphin: Dolphin): void;
 }
 ```
+
+```typescript
+interface Animal {
+    accept(operation: AnimalOperation): void;
+}
+
+class Monkey implements Animal {
+    public shout(): void {
+        console.log('Ooh oo aa aa!');
+    }
+
+    public accept(operation: AnimalOperation): void {
+        operation.visitMonkey(this);
+    }
+}
+
+class Lion implements Animal {
+    public roar(): void {
+        console.log('Roaaar!');
+    }
+
+    public accept(operation: AnimalOperation): void {
+        operation.visitLion(this);
+    }
+}
+
+class Dolphin implements Animal {
+    public speak(): void {
+        console.log('Tuut tuttu tuutt!');
+    }
+
+    public accept(operation: AnimalOperation): void {
+        operation.visitDolphin(this);
+    }
+}
+```
+
+```typescript
+class Speak implements AnimalOperation {
+    public visitMonkey(monkey: Monkey): void {
+        monkey.shout();
+    }
+
+    public visitLion(lion: Lion): void {
+        lion.roar();
+    }
+
+    public visitDolphin(dolphin: Dolphin): void {
+        dolphin.speak();
+    }
+}
+```
+
+```typescript
+const monkey = new Monkey();
+const lion = new Lion();
+const dolphin = new Dolphin();
+
+const speak = new Speak();
+
+monkey.accept(speak);    // Ooh oo aa aa!    
+lion.accept(speak);      // Roaaar!
+dolphin.accept(speak);   // Tuut tutt tuutt!
+```
