@@ -309,30 +309,30 @@ console.log(user2)
 ## 💍 Singleton
 > Инфа
 
+Чтобы сделать сингтон класс, необходимо скрыть конструктор, выключить клонирование, наследование
 ```typescript
-final class President {
-    private static instance: President;
+class President {
+    private static instance: President;
+    
+    private constructor() {
+        // Hide the constructor
+    }
 
-    private constructor() {
-        // Hide the constructor
-    }
-
-    public static getInstance(): President {
-        if (!President.instance) {
-            President.instance = new President();
-        }
-
-        return President.instance;
-    }
-
-    private __clone() {
-        // Disable cloning
-    }
-
-    private __wakeup() {
-        // Disable unserialize
-    }
+    public static getInstance(): President {
+        if (!President.instance) {
+            President.instance = new President();
+        }
+        
+        return President.instance;
+    }
 }
+```
+
+```typescript
+const president1 = President.getInstance();
+const president2 = President.getInstance();
+
+console.log(president1 === president2); // true
 ```
 
 # Structural Design Patterns
