@@ -1318,3 +1318,34 @@ dolphin.accept(speak);   // Tuut tutt tuutt!
 ```
 
 Также мы можем добавить новый функционал к классам животных просто добавив новых `visitor`
+```typescript
+class Jump implements AnimalOperation {
+    public visitMonkey(monkey: Monkey): void {
+        console.log('Jumped 20 feet high! on to the tree!');
+    }
+
+    public visitLion(lion: Lion): void {
+        console.log('Jumped 7 feet! Back on the ground!');
+    }
+
+    public visitDolphin(dolphin: Dolphin): void {
+        console.log('Walked on water a little and disappeared');
+    }
+}
+```
+
+Использование
+```typescript
+const jump = new Jump();
+
+monkey.accept(speak);        // Ooh oo aa aa!
+monkey.accept(jump);         // Jumped 20 feet high! on to the tree!
+
+lion.accept(speak);          // Roaaar!
+lion.accept(jump);           // Jumped 7 feet! Back on the ground!
+
+dolphin.accept(speak);       // Tuut tutt tuutt!
+dolphin.accept(jump);        // Walked on water a little and disappeared
+```
+
+## 💡 Strategy
