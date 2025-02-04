@@ -962,3 +962,71 @@ remote.submit(turnOff); // Darkness!
 Паттерн хорошо подходит для систем основанных на транзакциях. В случае если какая-то команда не выполнена, мы можем перемещаясь по системе операции вызывать метод undo.
 
 ## ➿ Iterator
+
+```typescript
+class RadioStation {
+    protected frequency: number;
+
+    constructor(frequency: number) {
+        this.frequency = frequency;
+    }
+
+    getFrequency(): number {
+        return this.frequency;
+    }
+}
+```
+
+```typescript
+class StationList implements Iterable<RadioStation> {
+    private stations: RadioStation[] = [];
+    private counter: number = 0;
+
+    public addStation(station: RadioStation): void {
+        this.stations.push(station);
+    }
+
+    public removeStation(toRemove: RadioStation): void {
+        const toRemoveFrequency = toRemove.getFrequency();
+        this.stations = this.stations.
+	        filter(station => station.getFrequency() !== toRemoveFrequency);
+    }
+
+    public count(): number {
+        return this.stations.length;
+    }
+
+    public current(): RadioStation {
+        return this.stations[this.counter];
+    }
+
+    public key(): number {
+        return this.counter;
+    }
+
+    public next(): void {
+        this.counter++;
+    }
+
+    public rewind(): void {
+        this.counter = 0;
+    }
+
+    public valid(): boolean {
+        return this.counter >= 0 && this.counter < this.stations.length;
+    }
+
+    [Symbol.iterator](): Iterator<RadioStation> {
+        this.rewind();
+        return {
+            next: () => {
+                if (this.valid()) {
+                    return { value: this.current(), done: false };
+                } else {
+                    return { done: true } as IteratorResult<RadioStation>;
+                }
+            }
+        };
+    }
+}
+```
