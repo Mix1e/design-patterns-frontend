@@ -306,7 +306,7 @@ let user2 = user.clone()
 console.log(user2)
 ```
 
-## 🔌 Singleton
+## 💍 Singleton
 > Инфа
 
 ```typescript
