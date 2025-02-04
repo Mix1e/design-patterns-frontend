@@ -9,7 +9,7 @@
 | [[README#🔨 Abstract Factory\|Abstract Factory]]                  | [[README#🌿 Composite \| Composite]]                               | [[README#➿ Iterator \| Iterator]]                                   |
 | [[README#👷 Builder\| Builder]]                                   | [[README#☕ Decorator \| Decorator]]                                | [[README#👽 Mediator \| Mediator]]                                  |
 | [[README#🐑 Prototype \| Prototype]]                              | [[README#📦 Facade\| Facade]]                                      | [[README#💾 Memento \| Memento]]                                    |
-| Singleton                                                         | [[README#🍃 Flyweight \| Flyweight]]                               | [[README#😎 Observer \| Observer]]                                  |
+| [[README#💍 Singleton \| Singleton]]                              | [[README#🍃 Flyweight \| Flyweight]]                               | [[README#😎 Observer \| Observer]]                                  |
 |                                                                   | [[README#🎱 Proxy \| Proxy]]                                       | [[README#🏃 Visitor \| Visitor]]                                    |
 |                                                                   |                                                                    | [[README#💡 Strategy \| Strategy]]                                  |
 |                                                                   |                                                                    | [[README#💢 State \| State]]                                        |
@@ -307,7 +307,7 @@ console.log(user2)
 ```
 
 ## 💍 Singleton
-> Инфа
+> Анти-паттерн, который гарантирует наличие только одного инстанса класса
 
 Чтобы сделать сингтон класс, необходимо скрыть конструктор, выключить клонирование, наследование
 ```typescript
