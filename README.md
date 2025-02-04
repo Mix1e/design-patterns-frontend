@@ -1316,3 +1316,5 @@ monkey.accept(speak);    // Ooh oo aa aa!
 lion.accept(speak);      // Roaaar!
 dolphin.accept(speak);   // Tuut tutt tuutt!
 ```
+
+Также мы можем добавить новый функционал к классам животных просто добавив новых `visitor`
