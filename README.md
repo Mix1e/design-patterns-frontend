@@ -1489,3 +1489,79 @@ phone.dial();
 ```
 
 ## 📒 Template Method
+> Метод шаблона определяет шаблон как должны будут выполнены шаги, реализация которых делегируется дочерним классам
+
+```typescript
+abstract class Builder {
+    // Template method
+    public final build(): void {
+        this.test();
+        this.lint();
+        this.assemble();
+        this.deploy();
+    }
+
+    public abstract test(): void;
+    public abstract lint(): void;
+    public abstract assemble(): void;
+    public abstract deploy(): void;
+}
+```
+
+```typescript
+class AndroidBuilder extends Builder {
+    public test(): void {
+        console.log('Running android tests');
+    }
+
+    public lint(): void {
+        console.log('Linting the android code');
+    }
+
+    public assemble(): void {
+        console.log('Assembling the android build');
+    }
+
+    public deploy(): void {
+        console.log('Deploying android build to server');
+    }
+}
+
+class IosBuilder extends Builder {
+    public test(): void {
+        console.log('Running ios tests');
+    }
+
+    public lint(): void {
+        console.log('Linting the ios code');
+    }
+
+    public assemble(): void {
+        console.log('Assembling the ios build');
+    }
+
+    public deploy(): void {
+        console.log('Deploying ios build to server');
+    }
+}
+```
+
+```typescript
+const androidBuilder = new AndroidBuilder();
+androidBuilder.build();
+
+// Output:
+// Running android tests
+// Linting the android code
+// Assembling the android build
+// Deploying android build to server
+
+const iosBuilder = new IosBuilder();
+iosBuilder.build();
+
+// Output:
+// Running ios tests
+// Linting the ios code
+// Assembling the ios build
+// Deploying ios build to server
+```
