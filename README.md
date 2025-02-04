@@ -1051,4 +1051,21 @@ stationList.removeStation(new RadioStation(89)); // Will remove station 89
 Паттерн позволяет итерироваться и взаимодействовать с объектом без понимания его внутренней реализации
 
 ## 👽 Mediator
->
+>Паттерн посредника (сущности со стороны), для обеспечения взаимодействия между объектами
+
+```typescript
+interface ChatRoomMediator {
+    showMessage(user: User, message: string): void;
+}
+
+// Mediator
+class ChatRoom implements ChatRoomMediator {
+    showMessage(user: User, message: string): void {
+        const time: string = new Date()
+			        .toLocaleString('en-US', { timeZone: 'UTC', hour12: false });
+        const sender: string = user.getName();
+
+        console.log(`${time} [${sender}]: ${message}`);
+    }
+}
+```
