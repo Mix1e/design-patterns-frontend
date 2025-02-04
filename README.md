@@ -937,3 +937,28 @@ class TurnOff implements Command {
 }
 ```
 
+`Invoker` запускает и взаимодействует с любыми командами
+```typescript
+// Invoker
+class RemoteControl {
+    public submit(command: Command): void {
+        command.execute();
+    }
+}
+```
+
+Использование
+```typescript
+cosnt bulb = new Bulb();
+
+const turnOn = new TurnOn(bulb);
+const turnOff = new TurnOff(bulb);
+
+const remote = new RemoteControl();
+remote.submit(turnOn); // Bulb has been lit!
+remote.submit(turnOff); // Darkness!
+```
+
+Паттерн хорошо подходит для систем основанных на транзакциях. В случае если какая-то команда не выполнена, мы можем перемещаясь по системе операции вызывать метод undo.
+
+## ➿ Iterator
