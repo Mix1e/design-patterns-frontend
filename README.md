@@ -310,7 +310,29 @@ console.log(user2)
 > Инфа
 
 ```typescript
+final class President {
+    private static instance: President;
 
+    private constructor() {
+        // Hide the constructor
+    }
+
+    public static getInstance(): President {
+        if (!President.instance) {
+            President.instance = new President();
+        }
+
+        return President.instance;
+    }
+
+    private __clone() {
+        // Disable cloning
+    }
+
+    private __wakeup() {
+        // Disable unserialize
+    }
+}
 ```
 
 # Structural Design Patterns
