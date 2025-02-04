@@ -1,5 +1,6 @@
 # design-patterns-frontend
 Моя интерпретация паттернов проектирования для frontend на typescript
+Оригинал: https://github.com/kamranahmedse/design-patterns-for-humans
 
 | [[README#Creational Design Patterns\|Creational Design Patterns]] | [[README#Structural Design Patterns\| Structural Design Patterns]] | [[README#Behavioral Design Patterns \| Behavioral Design Patterns]] |
 | :---------------------------------------------------------------- | :----------------------------------------------------------------- | :------------------------------------------------------------------ |
