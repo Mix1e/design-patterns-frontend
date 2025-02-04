@@ -1,18 +1,18 @@
 # design-patterns-frontend
 Моя интерпретация паттернов проектирования для frontend на typescript
 
-| [[README#Creational Design Patterns\|Creational Design Patterns]] | [[README#Structural Design Patterns\| Structural Design Patterns]] | [[README#Behavioral Design Patterns \| Behavioral Design Patterns]]              |
-| :---------------------------------------------------------------- | :----------------------------------------------------------------- | :------------------------------------------------------------------------------- |
-| [[README#🏠 Simple Factory \| Simple Factory]]                    | [[README#🔌 Adapter \| Adapter]]                                   | [Chain of Responsibility](app://obsidian.md/index.html#-chain-of-responsibility) |
-| [[README#🏭 Factory Method\|Factory Method]]                      | [[README#🚡 Bridge \| Bridge]]                                     | [Command](app://obsidian.md/index.html#-command)                                 |
-| [[README#🔨 Abstract Factory\|Abstract Factory]]                  | [[README#🌿 Composite \| Composite]]                               | [Iterator](app://obsidian.md/index.html#-iterator)                               |
-| [[README#👷 Builder\| Builder]]                                   | [[README#☕ Decorator \| Decorator]]                                | [Mediator](app://obsidian.md/index.html#-mediator)                               |
-| [[README#🐑 Prototype \| Prototype]]                              | [[README#📦 Facade\| Facade]]                                      | [Memento](app://obsidian.md/index.html#-memento)                                 |
-| Singleton (не практичный)                                         | [[README#🍃 Flyweight \| Flyweight]]                               | [Observer](app://obsidian.md/index.html#-observer)                               |
-|                                                                   | [[README#🎱 Proxy \| Proxy]]                                       | [Visitor](app://obsidian.md/index.html#-visitor)                                 |
-|                                                                   |                                                                    | [Strategy](app://obsidian.md/index.html#-strategy)                               |
-|                                                                   |                                                                    | [State](app://obsidian.md/index.html#-state)                                     |
-|                                                                   |                                                                    | [Template Method](app://obsidian.md/index.html#-template-method)                 |
+| [[README#Creational Design Patterns\|Creational Design Patterns]] | [[README#Structural Design Patterns\| Structural Design Patterns]] | [[README#Behavioral Design Patterns \| Behavioral Design Patterns]] |
+| :---------------------------------------------------------------- | :----------------------------------------------------------------- | :------------------------------------------------------------------ |
+| [[README#🏠 Simple Factory \| Simple Factory]]                    | [[README#🔌 Adapter \| Adapter]]                                   | [[README#🔗 Chain of Responsibility \| Chain of Responsibility]]    |
+| [[README#🏭 Factory Method\|Factory Method]]                      | [[README#🚡 Bridge \| Bridge]]                                     | [[README#👮 Command \| Command]]                                    |
+| [[README#🔨 Abstract Factory\|Abstract Factory]]                  | [[README#🌿 Composite \| Composite]]                               | [[README#➿ Iterator \| Iterator]]                                   |
+| [[README#👷 Builder\| Builder]]                                   | [[README#☕ Decorator \| Decorator]]                                | [[README#👽 Mediator \| Mediator]]                                  |
+| [[README#🐑 Prototype \| Prototype]]                              | [[README#📦 Facade\| Facade]]                                      | [[README#💾 Memento \| Memento]]                                    |
+| Singleton (не практичный)                                         | [[README#🍃 Flyweight \| Flyweight]]                               | [Observer](app://obsidian.md/index.html#-observer)                  |
+|                                                                   | [[README#🎱 Proxy \| Proxy]]                                       | [Visitor](app://obsidian.md/index.html#-visitor)                    |
+|                                                                   |                                                                    | [Strategy](app://obsidian.md/index.html#-strategy)                  |
+|                                                                   |                                                                    | [State](app://obsidian.md/index.html#-state)                        |
+|                                                                   |                                                                    | [Template Method](app://obsidian.md/index.html#-template-method)    |
 
 # Creational Design Patterns
 ---
@@ -1101,4 +1101,45 @@ jane.send('Hey!');
 // Output will be
 // Feb 14, 10:58 [John]: Hi there!
 // Feb 14, 10:58 [Jane]: Hey!
+```
+
+> NOTE: честно говоря, не знаю как это ещё использовать кроме как логировать информацию
+
+## 💾 Memento
+> Паттерн, который позволяет восстанавливать состояние объекта
+
+```typescript
+class EditorMemento {
+    protected content: string;
+
+    constructor(content: string) {
+        this.content = content;
+    }
+
+    getContent(): string {
+        return this.content;
+    }
+}
+```
+
+```typescript
+class Editor {
+    protected content: string = '';
+
+    type(words: string): void {
+        this.content = this.content + ' ' + words;
+    }
+
+    getContent(): string {
+        return this.content;
+    }
+
+    save(): EditorMemento {
+        return new EditorMemento(this.content);
+    }
+
+    restore(memento: EditorMemento): void {
+        this.content = memento.getContent();
+    }
+}
 ```
