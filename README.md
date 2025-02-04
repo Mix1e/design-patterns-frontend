@@ -793,3 +793,49 @@ door.close();         // Closing lab door
 
 # Behavioral Design Patterns
 ---
+```typescript
+abstract class Account {
+    protected successor: Account | null = null;
+    protected balance: number;
+
+    public setNext(account: Account): void {
+        this.successor = account;
+    }
+
+    public pay(amountToPay: number): void {
+        if (this.canPay(amountToPay)) {
+            console.log(`Paid ${amountToPay} using ${this.constructor.name}`);
+        } else if (this.successor) {
+            console.log(`Cannot pay using ${this.constructor.name}. Proceeding..`);
+            this.successor.pay(amountToPay);
+        } else {
+            throw new Error('None of the accounts have enough balance');
+        }
+    }
+
+    public canPay(amount: number): boolean {
+        return this.balance >= amount;
+    }
+}
+
+class Bank extends Account {
+    constructor(balance: number) {
+        super();
+        this.balance = balance;
+    }
+}
+
+class Paypal extends Account {
+    constructor(balance: number) {
+        super();
+        this.balance = balance;
+    }
+}
+
+class Bitcoin extends Account {
+    constructor(balance: number) {
+        super();
+        this.balance = balance;
+    }
+}
+```
