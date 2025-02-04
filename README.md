@@ -8,11 +8,11 @@
 | [[README#🔨 Abstract Factory\|Abstract Factory]]                  | [[README#🌿 Composite \| Composite]]                               | [[README#➿ Iterator \| Iterator]]                                   |
 | [[README#👷 Builder\| Builder]]                                   | [[README#☕ Decorator \| Decorator]]                                | [[README#👽 Mediator \| Mediator]]                                  |
 | [[README#🐑 Prototype \| Prototype]]                              | [[README#📦 Facade\| Facade]]                                      | [[README#💾 Memento \| Memento]]                                    |
-| Singleton (не практичный)                                         | [[README#🍃 Flyweight \| Flyweight]]                               | [Observer](app://obsidian.md/index.html#-observer)                  |
-|                                                                   | [[README#🎱 Proxy \| Proxy]]                                       | [Visitor](app://obsidian.md/index.html#-visitor)                    |
-|                                                                   |                                                                    | [Strategy](app://obsidian.md/index.html#-strategy)                  |
-|                                                                   |                                                                    | [State](app://obsidian.md/index.html#-state)                        |
-|                                                                   |                                                                    | [Template Method](app://obsidian.md/index.html#-template-method)    |
+| Singleton (не практичный)                                         | [[README#🍃 Flyweight \| Flyweight]]                               | [[README#😎 Observer \| Observer]]                                  |
+|                                                                   | [[README#🎱 Proxy \| Proxy]]                                       | [[README#🏃 Visitor \| Visitor]]                                    |
+|                                                                   |                                                                    | [[README#💡 Strategy \| Strategy]]                                  |
+|                                                                   |                                                                    | [[README#💢 State \| State]]                                        |
+|                                                                   |                                                                    | [[README#📒 Template Method \| Template Method]]                    |
 
 # Creational Design Patterns
 ---
