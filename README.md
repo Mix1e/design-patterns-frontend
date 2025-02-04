@@ -839,3 +839,4 @@ class Bitcoin extends Account {
     }
 }
 ```
+
