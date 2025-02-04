@@ -1069,3 +1069,33 @@ class ChatRoom implements ChatRoomMediator {
     }
 }
 ```
+
+```typescript
+class User {
+    protected name: string;
+    protected chatMediator: ChatRoomMediator;
+
+    constructor(name: string, chatMediator: ChatRoomMediator) {
+        this.name = name;
+        this.chatMediator = chatMediator;
+    }
+
+    getName(): string {
+        return this.name;
+    }
+
+    send(message: string): void {
+        this.chatMediator.showMessage(this, message);
+    }
+}
+```
+
+```typescript
+const mediator = new ChatRoom();
+
+const john = new User('John Doe', mediator);
+const jane = new User('Jane Doe', mediator);
+
+john.send('Hi there!');
+jane.send('Hey!');
+```
