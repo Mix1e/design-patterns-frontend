@@ -1349,3 +1349,110 @@ dolphin.accept(jump);        // Walked on water a little and disappeared
 ```
 
 ## 💡 Strategy
+> Паттерн стратегии позволяет переключать поведение в зависимости от ситуации
+
+```typescript
+interface SortStrategy {
+    sort(dataset: any[]): any[];
+}
+
+class BubbleSortStrategy implements SortStrategy {
+    sort(dataset: any[]): any[] {
+        console.log("Sorting using bubble sort");
+
+        // Do sorting
+        return dataset;
+    }
+}
+
+class QuickSortStrategy implements SortStrategy {
+    sort(dataset: any[]): any[] {
+        console.log("Sorting using quick sort");
+
+        // Do sorting
+        return dataset;
+    }
+}
+```
+
+```typescript
+class Sorter {
+    protected sorterSmall: SortStrategy;
+    protected sorterBig: SortStrategy;
+
+    constructor(sorterSmall: SortStrategy, sorterBig: SortStrategy) {
+        this.sorterSmall = sorterSmall;
+        this.sorterBig = sorterBig;
+    }
+
+    public sort(dataset: any[]): any[] {
+        if (dataset.length > 5) {
+            return this.sorterBig.sort(dataset);
+        } else {
+            return this.sorterSmall.sort(dataset);
+        }
+    }
+}
+```
+
+Использование
+```typescript
+const smallDataset = [1, 3, 4, 2];
+const bigDataset = [1, 4, 3, 2, 8, 10, 5, 6, 9, 7];
+
+const sorter: Sorter = new Sorter(new BubbleSortStrategy(), new QuickSortStrategy());
+
+sorter.sort(smallDataset); // Output : Sorting using bubble sort
+sorter.sort(bigDataset); // Output : Sorting using quick sort
+```
+
+## 💢 State
+> Изменение поведения класса при изменении состояния (стейт-машина)
+
+```typescript
+// PhoneState interface representing the different states of a phone
+interface PhoneState {
+    pickUp(): PhoneState;
+    hangUp(): PhoneState;
+    dial(): PhoneState;
+}
+
+// Implementation of the idle state of the phone
+class PhoneStateIdle implements PhoneState {
+    pickUp(): PhoneState {
+        return new PhoneStatePickedUp();
+    }
+    hangUp(): PhoneState {
+        throw new Error("already idle");
+    }
+    dial(): PhoneState {
+        throw new Error("unable to dial in idle state");
+    }
+}
+
+// Implementation of the picked up state of the phone
+class PhoneStatePickedUp implements PhoneState {
+    pickUp(): PhoneState {
+        throw new Error("already picked up");
+    }
+    hangUp(): PhoneState {
+        return new PhoneStateIdle();
+    }
+    dial(): PhoneState {
+        return new PhoneStateCalling();
+    }
+}
+
+// Implementation of the calling state of the phone
+class PhoneStateCalling implements PhoneState {
+    pickUp(): PhoneState {
+        throw new Error("already picked up");
+    }
+    hangUp(): PhoneState {
+        return new PhoneStateIdle();
+    }
+    dial(): PhoneState {
+        throw new Error("already dialing");
+    }
+}
+```
