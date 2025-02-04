@@ -9,7 +9,7 @@
 | [[README#🔨 Abstract Factory\|Abstract Factory]]                  | [[README#🌿 Composite \| Composite]]                               | [[README#➿ Iterator \| Iterator]]                                   |
 | [[README#👷 Builder\| Builder]]                                   | [[README#☕ Decorator \| Decorator]]                                | [[README#👽 Mediator \| Mediator]]                                  |
 | [[README#🐑 Prototype \| Prototype]]                              | [[README#📦 Facade\| Facade]]                                      | [[README#💾 Memento \| Memento]]                                    |
-| Singleton (не практичный)                                         | [[README#🍃 Flyweight \| Flyweight]]                               | [[README#😎 Observer \| Observer]]                                  |
+| Singleton                                                         | [[README#🍃 Flyweight \| Flyweight]]                               | [[README#😎 Observer \| Observer]]                                  |
 |                                                                   | [[README#🎱 Proxy \| Proxy]]                                       | [[README#🏃 Visitor \| Visitor]]                                    |
 |                                                                   |                                                                    | [[README#💡 Strategy \| Strategy]]                                  |
 |                                                                   |                                                                    | [[README#💢 State \| State]]                                        |
@@ -304,6 +304,13 @@ let user = new UserHistory('vladislav.pestsov@gmail.com', 'Vladislav')
 console.log(user);
 let user2 = user.clone()
 console.log(user2)
+```
+
+## 🔌 Singleton
+> Инфа
+
+```typescript
+
 ```
 
 # Structural Design Patterns
